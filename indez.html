@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <style>
+            body {
+                background-color: hotpink;
+              }
+            button {
+                border: none;
+                height: 100px;
+                width: 100px;
+                background-color: white;
+                transform: rotate(-45deg);
+                position: relative;
+            }
+
+            button::before,
+            button::after {
+                content: "";
+                height: 100px;
+                width: 100px;
+                background-color: white;
+                border-radius: 50%;
+                position: absolute;
+            }
+            button::before {
+                top: -50px;
+                left: 0px;
+            }
+
+            button::after {
+                left: 50px;
+                top: 0px;
+            }
+
+            .klik {
+                transition: transform 2.5s ease;
+            }
+
+            .touched {
+                transform: scale(8.8);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="klok" class="klik">
+            <button type="button"></button>
+        </div>
+        <script>
+            let tekan;
+
+            const lovebtn = document.querySelector(".klik");
+
+            lovebtn.addEventListener("touchstart", function () {
+                pressTimer = setTimeout(function () {
+                    window.location.href = "Index.html"; // Ganti dengan URL halaman yang ingin dibuka
+                }, 2000); // 2000 ms = 2 detik
+            });
+
+            lovebtn.addEventListener("touchend", function () {
+                clearTimeout(pressTimer);
+            });
+
+            lovebtn.addEventListener("touchcancel", function () {
+                clearTimeout(pressTimer);
+            });
+            const touchArea = document.getElementById("klok");
+
+            touchArea.addEventListener("touchstart", function () {
+                touchArea.classList.add("touched");
+            });
+
+            touchArea.addEventListener("touchend", function () {
+                touchArea.classList.remove("touched");
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link
+            href="https://fonts.cdnfonts.com/css/love-and-romance"
+            rel="stylesheet"
+        />
+
+        <link
+            href="https://fonts.cdnfonts.com/css/fonesia?styles=33365"
+            rel="stylesheet"
+        />
+
+        <style>
+            @import url("https://fonts.cdnfonts.com/css/romantic");
+            body {
+                background-color: hotpink;
+                font-family: "Fonesia Bold";
+            }
+
+            button {
+                border: none;
+                height: 100px;
+                width: 100px;
+                background-color: white;
+                transform: rotate(-45deg);
+                position: relative;
+            }
+
+            button::before,
+            button::after {
+                content: "";
+                height: 100px;
+                width: 100px;
+                background-color: white;
+                border-radius: 50%;
+                position: absolute;
+            }
+            button::before {
+                top: -50px;
+                left: 0px;
+            }
+
+            button::after {
+                left: 50px;
+                top: 0px;
+            }
+
+            .klik {
+                scale: 8.8;
+                animation: shrink 1s forwards;
+                position: fixed;
+            }
+
+            @keyframes shrink {
+                0% {
+                    transform: scale(1);
+                }
+                100% {
+                    transform: scale(0);
+                }
+            }
+
+            .frst {
+                position: absolute;
+                margin: 17px;
+                font-size: 17px;
+                top: 0px;
+                left: 0px;
+                color: white;
+                animation: fadeup 1.5s forwards;
+                animation-delay: 1s;
+                opacity: 0;
+                text-align: justify;
+            }
+
+            @keyframes fadeup {
+                from {
+                    top: -50px;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .typ {
+                width: 100%;
+                height: 300px;
+                color: white;
+                margin: 17px;
+                font-size: 17px;
+                position: relative;
+                top: -70px;
+                left: 0px;
+                text-align: justify;
+            }
+            .title {
+                position: absolute;
+                color: white;
+                margin: 20px;
+                top: 1150px;
+            }
+
+            .kl1 {
+                position: absolute;
+                width: 23%;
+                margin: 17px;
+                padding-bottom: 30px;
+                left: 0px;
+                top: 1200px;
+                text-align: center;
+                color: white;
+                font-size: 15px;
+            }
+            .kl2 {
+                position: absolute;
+                left: 100px;
+                top: 1200px;
+                text-align: center;
+                font-size: 15px;
+                padding-bottom: 30px;
+                margin: 17px;
+                color: white;
+                width: 15%;
+            }
+            
+            .kl3{
+            position: absolute;
+                left: 160px;
+                top: 1200px;
+                text-align: center;
+                font-size: 15px;
+                padding-bottom: 30px;
+                margin: 17px;
+                color: white;
+                width: 30%;
+            }
+            
+            .kl4{
+              position: absolute;
+                left: 280px;
+                top: 1200px;
+                text-align: center;
+                font-size: 15px;
+                padding-bottom: 30px;
+                margin: 17px;
+                color: white;
+                width: 23%;
+            }
+            
+            a {
+                font-size: 30px;
+                text-decoration: none;
+            }
+           
+           .ttl{
+             position: absolute;
+             text-align: center;
+             color: white;
+             top: 135px;
+             animation: down 1s forwards;
+             animation-delay: 1.5s;
+             opacity: 0;
+           }
+           
+           @keyframes down {
+           from{
+             top: 20px;
+           }
+             to{
+               opacity: 1;
+             }
+           }
+        </style>
+    </head>
+    <body>
+        <div class="klik">
+            <button type="button"></button>
+        </div>
+
+        <div id="frst" class="frst">
+            HALOO SAYANGG, AKUU BUAT INI SPESIAL BUAT KAMU, SEMOGA KAMU SUKA YA
+            SAYANGG, MAAFF YAA KALO MASIH JELEK KARNAA AKU PEMULAA HIHI. LOP LOP
+            &#129293;
+        </div>
+        
+        <h4 class="ttl">KEBAHAGIAAN YANG SEDERHANA</h4>
+        
+        <div class="typ" id="typ"></div>
+
+        <h3 class="title">PENCET LOVENYA YA SAYANGG</h3>
+
+        <div class="klmpk">
+            <div class="kl1">kembang api<a href="api.html">&#129293;</a></div>
+            <div class="kl2">kita<a href="kita.html">&#129293;</a></div>
+            <div class="kl3">pesan buat aku?<a href="pesan.html">&#129293;</a></div>
+            <div class="kl4">buat kamu<a href="katakata.html">&#129293;</a></div>
+        </div>
+
+        <script>
+            const text =
+                "Haloo melinnn, baca yaa sayangg, kalo kamu pikir, bahagia aku itu selalu tentang hal yang besar, tentang hal yang mewah. kamu salah, aku ga akan pernah bisa bahagia karena hal kayak gitu, bahagia aku itu sederhana. disaat Allah udah nakdirin kita buat bersama selamanya. simple kan? sederhana tapi belum tentu jadi nyata. oh iya mau tau ga kenapa bahagia aku se simple itu? karena ga semua kebahagiaan harus di ukur dari materi dan ekonomi. semua orang bakal bahagia, kalo mereka udah ketemu sama orang yang tepat dan selalu menyempurnakan apa yang mereka punya sekarang. sama kayak aku, aku selalu bilang sama diri aku sendiri, kalo aku itu laki-laki paling terberuntung karena punya kamu disini. dan aku harap Allah ga akan pernah ngubah takdir kamu buat aku, semoga ya sayangg. Dan sayangg semuanya tetap tentang kamu, kamu tuu yang bikin aku jatuh cinta sedalam inii, jatuh cinta yang berulang kali tanpa bosen, ga pernah ngerasa ga cukup sama kamu, kamu selalu melengkapi setiap kekurangan akuu,  maaf ya aku kadang gabisa ngertiin perasaan kamu, bahkan aku childs banget, tapi semua yang kamu lakuin buat aku, aku rasa itu hal paling beharga buat aku, aku orang paling beruntung bisa di sayang sama orang kaya kamu, loving you was one of the best decision of my life. aku terlalu bergantung semuanya sama kamu, setiap secapenya aku selalu mau pulang ke kamu terus emang senyaman itu aku sama kamu, ga pernah bosen dan ga pernah ada rasa pengen ninggalin kamu. maaf ya kalo aku sering ngebebanin kamu, tapi percaya deh aku cuman punya kamu doang aku gabisa berhenti buat sayang sama kamu, jangan ninggalin aku ya sayanggg. liat bawahnya yaa sayangg";
+            const outputElement = document.getElementById("typ");
+            const typingDelay = 10; // Delay antara setiap karakter (dalam milidetik)
+            const startDelay = 2000; // Delay sebelum mulai mengetik (dalam milidetik)
+
+            function typeText(text, index) {
+                if (index < text.length) {
+                    outputElement.textContent += text.charAt(index);
+                    setTimeout(() => typeText(text, index + 1), typingDelay);
+                }
+            }
+
+            // Mulai mengetik setelah delay
+            setTimeout(() => {
+                typeText(text, 0);
+            }, startDelay);
+
+            window.onload = typeWriter;
+        </script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
+</html>

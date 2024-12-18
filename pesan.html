@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pesan Untuk Pasangan</title>
+  <link
+  href="https://fonts.cdnfonts.com/css/fonesia?styles=33365"
+  rel="stylesheet"
+  />
+<style>
+  body {
+    font-family: "Fonesia Bold";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: hotpink;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 30px;
+            width: 350px;
+            text-align: center;
+        }
+
+        .message-input {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .send-btn {
+            background-color: hotpink;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .send-btn:hover {
+            background-color: pink;
+        }
+
+        #messageList {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .message {
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            word-wrap: break-word; /* Memastikan teks panjang tetap di dalam kotak */
+            white-space: normal; /* Memungkinkan teks berlanjut ke bawah */
+            overflow-wrap: break-word; /* Tambahan untuk kompatibilitas lintas browser */
+        }
+
+        .message-text {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .message-time {
+            display: block;
+            font-size: 0.8em;
+            color: #888;
+            text-align: right;
+        }
+  </style>
+</head>
+<body> <div class="container">
+    <h2>Pesan Buat Aku? :</h2>
+    <form id="formTele">
+      <input
+        type="text"
+        id="messageInput"
+        name="message"  // Tambahkan name attribute
+        class="message-input"
+        placeholder="Tulis pesan kamu"
+      >
+    </form>
+    <button id="sendBtn" class="send-btn">Kirim Pesan</button>
+
+    <div id="messageList"></div>
+  </div>
+
+
+  <script>
+const token = '7971466203:AAEXSoWjj-dF2S0jZN6cl9teDYKIA4GdXmI';
+    const grup = '-1001992854478';
+
+    const form = document.getElementById('formTele');
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    const sendMessage = (text) => {
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "chat_id": grup,
+          "text": text
+        })
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}, url: ${res.url}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log("Message sent successfully:", data);
+        messageInput.value = ''; // Clear input after sending
+      })
+      .catch(error => {
+        console.error("Error sending message:", error);
+        alert('Gagal mengirim pesan. Cek konsol untuk detail.');
+      });
+    };
+
+    // Tambahkan event listener untuk tombol
+    sendBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const text = messageInput.value.trim();
+      if (text) {
+        sendMessage(text);
+      }
+    });
+
+    // Tambahan: Kirim pesan saat enter ditekan
+    messageInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const text = messageInput.value.trim();
+        if (text) {
+          sendMessage(text);
+        }
+      }
+    });
+    
+    
+    function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const messageList = document.getElementById('messageList');
+
+      if (messageInput.value.trim() === '') {
+        alert('Tolong tulis pesan terlebih dahulu!');
+        return;
+      }
+
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message');
+      messageElement.innerHTML = `
+      <span class="message-text"><strong>Kamu:</strong> ${escapeHTML(messageInput.value)}</span>
+      <span class="message-time">${new Date().toLocaleString()}</span>
+      `;
+
+      messageList.insertBefore(messageElement, messageList.firstChild);
+      messageInput.value = '';
+    }
+
+    function escapeHTML(unsafe) {
+      return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+    }
+
+    // Tambahkan event listener untuk tombol Enter
+    document.getElementById('messageInput').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>
