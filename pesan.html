@@ -9,98 +9,111 @@
   />
 <style>
   body {
-    font-family: "Fonesia Bold";
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: hotpink;
-            margin: 0;
-        }
+  font-family: "Fonesia Bold";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: hotpink;
+  margin: 0;
+  }
 
-        .container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    padding: 30px;
-            width: 350px;
-            text-align: center;
-        }
+  .container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 30px;
+  width: 350px;
+  text-align: center;
+  }
 
-        .message-input {
-            width: 100%;
-            padding: 10px;
-            margin: 15px 0;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+  .message-input {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  }
 
-        .send-btn {
-            background-color: hotpink;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+  .send-btn {
+  background-color: hotpink;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  }
 
-        .send-btn:hover {
-            background-color: pink;
-        }
+  .send-btn:hover {
+  background-color: pink;
+  }
 
-        #messageList {
-            margin-top: 20px;
-            max-height: 200px;
-            overflow-y: auto;
-            text-align: left;
-        }
+  #messageList {
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+  text-align: left;
+  }
 
-        .message {
-            background-color: #f1f1f1;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            word-wrap: break-word; /* Memastikan teks panjang tetap di dalam kotak */
-            white-space: normal; /* Memungkinkan teks berlanjut ke bawah */
-            overflow-wrap: break-word; /* Tambahan untuk kompatibilitas lintas browser */
-        }
+  .message {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  word-wrap: break-word;
+  /* Memastikan teks panjang tetap di dalam kotak */
+  white-space: normal;
+  /* Memungkinkan teks berlanjut ke bawah */
+  overflow-wrap: break-word;
+  /* Tambahan untuk kompatibilitas lintas browser */
+  }
 
-        .message-text {
-            display: block;
-            margin-bottom: 5px;
-        }
+  .message-text {
+  display: block;
+  margin-bottom: 5px;
+  }
 
-        .message-time {
-            display: block;
-            font-size: 0.8em;
-            color: #888;
-            text-align: right;
-        }
-  </style>
+  .message-time {
+  display: block;
+  font-size: 0.8em;
+  color: #888;
+  text-align: right;
+  }
+</style>
 </head>
-<body> <div class="container">
-    <h2>Pesan Buat Aku? :</h2>
-    <form id="formTele">
-      <input
-        type="text"
-        id="messageInput"
-        name="message"  // Tambahkan name attribute
-        class="message-input"
-        placeholder="Tulis pesan kamu"
-      >
-    </form>
-    <button id="sendBtn" class="send-btn">Kirim Pesan</button>
+<body>
+<div class="container">
+<h2>Pesan Buat Aku? :</h2>
+<form id="formTele">
+<input
+type="text"
+id="messageInput"
+name="message"  // Tambahkan name attribute
+class="message-input"
+placeholder="Tulis pesan kamu"
+>
+</form>
+<button id="sendBtn" class="send-btn" value="KIRIM!" onclick="kirimpesan()">Kirim Pesan</button>
 
-    <div id="messageList"></div>
-  </div>
+<div id="messageList"></div>
+</div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
 
-  <script>
-    
-    
-    
-  </script>
+function kirimpesan(){
+  let pesan = document.getElementById('messageInput');
+  const token = "7971466203:AAEXSoWjj-dF2S0jZN6cl9teDYKIA4GdXmI";
+  const grup = "-1001992854478";
+  
+  $.ajax({
+    url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${pesan}&parse_mode=html`,
+    method:`POST`
+  })
+}
+
+</script>
 </body>
 </html>
